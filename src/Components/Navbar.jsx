@@ -1,8 +1,16 @@
 import { CircleUserRound } from 'lucide-react';
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = use(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+    }
+
     return (
         <div className="navbar">
             <div className="navbar-start">
@@ -28,7 +36,10 @@ const Navbar = () => {
             </div>
             <div className="navbar-end flex items-center gap-2">
                 <CircleUserRound size={40}></CircleUserRound>
-                <a className="btn shadow-none w-24 btn-primary text-base-100">Login</a>
+                {
+                    user ? <button onClick={handleLogOut} className='btn shadow-none w-24 btn-primary text-base-100'>LogOut</button> : <Link to="/auth/login" className="btn shadow-none w-24 btn-primary text-base-100">Login</Link>
+                }
+
             </div>
         </div>
     );

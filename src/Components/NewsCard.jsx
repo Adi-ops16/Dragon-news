@@ -1,8 +1,9 @@
 import { BookMarked, Eye, Share2, Star } from 'lucide-react';
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 
 const NewsCard = ({ news }) => {
-    const { title, image_url, details, author, total_view, rating } = news;
+    const { id, title, image_url, details, author, total_view, rating } = news;
     const { name, published_date, img } = author;
 
     const [isExpanded, setIsExpanded] = useState(false);
@@ -41,12 +42,12 @@ const NewsCard = ({ news }) => {
                     <p className='mx-4 border-b border-base-200 pb-4'>
                         {isExpanded ? details : shortText}
                         {details.length > 250 && (
-                            <button
+                            <Link to={`/news-details/${id}`}
                                 onClick={() => setIsExpanded(!isExpanded)}
                                 className='text-blue-600 ml-2 font-semibold hover:underline'
                             >
                                 {isExpanded ? 'Read Less' : 'Read More'}
-                            </button>
+                            </Link>
                         )}
                     </p>
                 </div>
