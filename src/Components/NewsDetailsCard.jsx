@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 
 const NewsDetailsCard = ({ news }) => {
     const { title, details, image_url, category_id } = news || {}
-    console.log({ title, details, image_url, category_id });
     return (
         <div className='p-7 border border-base-300 rounded-sm'>
             <div className='space-y-5'>

@@ -1,11 +1,13 @@
 import { Eye, EyeOff } from 'lucide-react';
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
     const { logIn } = use(AuthContext)
     const [showPassword, setShowPassword] = useState(false)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -13,6 +15,7 @@ const Login = () => {
         const password = e.target.password.value
         logIn(email, password)
         e.target.reset()
+        navigate(`${location.state ? location.state : "/"}`)
     }
 
     return (

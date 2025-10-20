@@ -26,6 +26,11 @@ const Navbar = () => {
                         <li><NavLink>Career</NavLink></li>
                     </ul>
                 </div>
+                <div>
+                    {
+                        user && <img className='w-12 h-12 rounded-full' src={user.photoURL} alt="" />
+                    }
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5">
